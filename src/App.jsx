@@ -1,6 +1,4 @@
 import {restaurants} from './materials/mock.js';
-import {Header} from 'components/Header';
-import {Footer} from 'components/Footer';
 import {Heading} from 'components/Heading';
 import {Button} from 'components/Button';
 import {List} from 'components/List';
@@ -36,8 +34,7 @@ function App() {
 
 
     return (
-        <>
-            <Header/>
+        <section>
 
 
             <div style={{
@@ -52,14 +49,14 @@ function App() {
                 <div style={{cursor: 'pointer', fontSize: '30px', userSelect: 'none'}} onClick={minusCount}>-</div>
             </div>
 
-            {restaurants.map(({id, name}) => (
+            {!!restaurants && restaurants.map(({id, name}) => (
                 <Button key={id} onClick={() => hiddenRestaurant(id)}>
                     {name}
                 </Button>
             ))}
 
 
-            {restaurants.map(({id, name, menu, reviews}) => {
+            {!!restaurants && restaurants.map(({id, name, menu, reviews}) => {
                 if (selectedTab === id) {
                     return (
                         <div key={id}>
@@ -90,8 +87,7 @@ function App() {
                 }
             })}
 
-            <Footer/>
-        </>
+        </section>
     )
 }
 
