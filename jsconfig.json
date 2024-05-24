@@ -4,8 +4,13 @@
     "paths": {
       "components/*": [
         "src/components/*"
+      ],
+      "customHooks/*": [
+        "src/customHooks/*"
       ]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
