@@ -6,7 +6,7 @@ import {useSelectTab} from 'customHooks/useSelectTab/useSelectTab.jsx';
 import './App.css';
 
 function App() {
-    const {count, minusCount, plusCount} = useCount();
+    const {count, minusCount, plusCount} = useCount({MIN: 0, MAX: 5, initialState: 0});
     const [selectedTab, onClickSelectTab] = useSelectTab({initialState: restaurants[0].id});
 
     return (

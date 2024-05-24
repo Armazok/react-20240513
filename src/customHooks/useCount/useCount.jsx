@@ -1,32 +1,27 @@
 import {useCallback, useState} from 'react';
 
-// eslint-disable-next-line react-refresh/only-export-components
-const CountLimits = {
-    MIN: 0,
-    MAX: 5
-};
 
-export const useCount = () => {
+export const useCount = ({initialState = 0, MIN = 0, MAX}) => {
 
-    let [count, setCount] = useState(0);
+    let [count, setCount] = useState(initialState);
 
     const plusCount = useCallback(() => {
         setCount(prevCount => {
-            if (prevCount < CountLimits.MAX) {
+            if (prevCount < MAX) {
                 return ++prevCount;
             }
             return prevCount;
         });
-    }, []);
+    }, [MAX]);
 
     const minusCount = useCallback(() => {
         setCount(prevCount => {
-            if (prevCount > CountLimits.MIN && prevCount <= CountLimits.MAX) {
+            if (prevCount > MIN && prevCount <= MAX) {
                 return --prevCount;
             }
             return prevCount;
         });
-    }, []);
+    }, [MIN, MAX]);
 
 
     return {count, plusCount, minusCount};
