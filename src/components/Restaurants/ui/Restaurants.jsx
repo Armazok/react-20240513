@@ -5,7 +5,7 @@ import {Fragment} from 'react';
 
 export const Restaurants = ({selectedTab, restaurants, onClickSelectTab}) => {
     return (
-        <>
+        <div style={{marginBottom: "30px"}}>
             <SelectRestaurants restaurants={restaurants} onClickSelectTab={onClickSelectTab}/>
             {!!restaurants && restaurants.map(({id, name, menu, reviews}) => {
                 if (selectedTab === id) {
@@ -38,6 +38,6 @@ export const Restaurants = ({selectedTab, restaurants, onClickSelectTab}) => {
                 }
                 return null;
             })}
-        </>
+        </div>
     );
 };
