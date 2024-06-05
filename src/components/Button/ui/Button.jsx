@@ -1,6 +1,8 @@
+import cls from './Button.module.scss';
+
 export const Button = ({children, ...otherProps}) => {
     return (
-        <button {...otherProps}>
+        <button className={cls.button} {...otherProps}>
             {children}
         </button>
     );
