@@ -14,7 +14,6 @@ function App() {
         <section>
             <Counter count={count} minusCount={minusCount} plusCount={plusCount}/>
             <Restaurants restaurants={restaurants} selectedTab={selectedTab} onClickSelectTab={onClickSelectTab}/>
-            <Restaurants restaurants={restaurants} selectedTab={selectedTab} onClickSelectTab={onClickSelectTab}/>
             <FeedbackForm/>
         </section>
     )

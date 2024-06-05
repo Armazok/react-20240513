@@ -4,7 +4,7 @@ export const initialState = {
     rating: 1
 }
 
-export const feedbackFormSlice = (state = initialState, {type, payload}) => {
+export const feedbackFormState = (state = initialState, {type, payload}) => {
     switch (type) {
         case 'setName':
             return {...state, name: payload};

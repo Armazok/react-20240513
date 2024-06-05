@@ -25,7 +25,6 @@ export const ProgressBar = () => {
 
     return (
         <div
-            id="progress-container"
             style={{
                 height: '4px',
                 width: '100%',
@@ -36,7 +35,6 @@ export const ProgressBar = () => {
                 right: '0'
             }}>
             <div
-                className="progress-fill"
                 style={{
                     height: '100%',
                     backgroundColor: 'blue',

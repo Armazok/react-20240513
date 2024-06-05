@@ -2,12 +2,12 @@ import {useCallback, useReducer} from 'react';
 import {Input} from 'components/Input';
 import {RatingSelector} from 'components/RatingSelector';
 import {Button} from 'components/Button';
-import {feedbackFormSlice, initialState} from '../model/slice/feedbackFormSlice.js';
+import {feedbackFormState, initialState} from '../model/state/feedbackFormState.js';
 import {setValue} from '../model/actions/actions.js';
 
 
 export const FeedbackForm = () => {
-    const [form, dispatch] = useReducer(feedbackFormSlice, initialState);
+    const [form, dispatch] = useReducer(feedbackFormState, initialState);
     const {name, text} = form;
 
     const handleNameChange = useCallback((e) => {
@@ -27,43 +27,31 @@ export const FeedbackForm = () => {
         dispatch(setValue('resetForm'));
     }, [dispatch]);
 
-    console.log('form: ', form)
-
-    const inputFields = [
-        {
-            label: 'Your name',
-            style: {marginLeft: '10px'},
-            type: 'text',
-            placeholder: 'Your name',
-            value: name,
-            onChange: handleNameChange
-        },
-        {
-            label: 'Your text',
-            style: {marginLeft: '10px'},
-            type: 'text',
-            placeholder: 'Your text',
-            value: text,
-            onChange: handleTextChange,
-        },
-    ];
 
     return (
         <form>
             <div style={{display: 'flex', flexDirection: 'column', marginBottom: '20px'}}>
-                {inputFields.map((fieldProps, index) => (
-                    <Input key={index} {...fieldProps} />
-                ))}
+                <Input
+                    type={'text'}
+                    value={text}
+                    placeholder={'Your text'}
+                    label={'Your text'}
+                    onChange={handleTextChange}
+                />
+                <Input
+                    type={'text'}
+                    value={name}
+                    placeholder={'Your name'}
+                    label={'Your name'}
+                    onChange={handleNameChange}
+                />
             </div>
 
             <div style={{marginBottom: '20px'}}>
                 <RatingSelector h3={'Rating'} min={1} max={5} onRatingChange={handleRatingChange}/>
             </div>
 
-            <div>
-                <Button onClick={(e) => handleSave(e)}>Save</Button>
-            </div>
-
+            <Button style={{marginBottom: '20px'}} onClick={(e) => handleSave(e)}>Save</Button>
         </form>
     );
 };
