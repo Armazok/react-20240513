@@ -2,6 +2,7 @@ import {Button} from 'components/Button';
 
 
 export const SelectRestaurants = ({restaurants, onClickSelectTab}) => {
+
     return (
         <>
             {!!restaurants && restaurants.map(({id, name}) => (

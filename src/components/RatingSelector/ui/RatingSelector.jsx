@@ -1,3 +1,5 @@
+import {Button} from 'components/Button';
+
 export const RatingSelector = ({h3, min, max, onRatingChange}) => {
 
     const handleRatingChange = (rating, e) => {
@@ -13,12 +15,12 @@ export const RatingSelector = ({h3, min, max, onRatingChange}) => {
         <div>
             <h3>{h3}</h3>
             {ratings.map((ratingNumber, index) => (
-                <button
+                <Button
                     key={index}
                     onClick={(e) => handleRatingChange(ratingNumber, e)}
                 >
                     {ratingNumber}
-                </button>
+                </Button>
             ))}
         </div>
     );

@@ -1,2 +1,4 @@
-export {useCount} from './useCount/useCount.jsx';
-export {useSelectTab} from './useSelectTab/useSelectTab.jsx';
+export {useModalWindow} from './useModal/useModal.js';
+export {useCount} from './useCount/useCount.js';
+export {useSelectTab} from './useSelectTab/useSelectTab.js';
+export {useLocalStorage} from './useLocalStorage/useLocalStorage.js';
