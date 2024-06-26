@@ -5,24 +5,32 @@ export const useCount = ({initialState = 0, MIN = 0, MAX}) => {
 
     let [count, setCount] = useState(initialState);
 
-    const plusCount = useCallback(() => {
-        setCount(prevCount => {
-            if (prevCount < MAX) {
-                return ++prevCount;
+    const plusCount = useCallback((id) => {
+        setCount((prevCounts) => {
+            let currentCount = prevCounts[id] || 0;
+            if (currentCount < MAX) {
+                return {
+                    ...prevCounts,
+                    [id]: ++currentCount
+                };
             }
-            return prevCount;
+            return prevCounts;
         });
     }, [MAX]);
 
-    const minusCount = useCallback(() => {
-        setCount(prevCount => {
-            if (prevCount > MIN && prevCount <= MAX) {
-                return --prevCount;
-            }
-            return prevCount;
-        });
-    }, [MIN, MAX]);
 
+    const minusCount = useCallback((id) => {
+        setCount((prevCounts) => {
+            let currentCount = prevCounts[id] || 0;
+            if (currentCount > MIN) {
+                return {
+                    ...prevCounts,
+                    [id]: --currentCount
+                };
+            }
+            return prevCounts;
+        });
+    }, [MIN]);
 
     return {count, plusCount, minusCount};
 }
